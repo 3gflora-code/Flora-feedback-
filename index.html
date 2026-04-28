@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3G Flora - Connect With Us</title>
+    <title>3G Flora - Feedback & Enquiry</title>
     <style>
         :root {
             --primary: #d4a373;
@@ -19,72 +19,53 @@
             background-image: linear-gradient(rgba(255,248,240,0.9), rgba(255,248,240,0.9)),
                               url('https://www.transparenttextures.com/patterns/flowers.png');
             background-size: cover, 300px;
-            padding: 20px; 
+            padding: 15px; 
             color: var(--text-dark); 
             margin: 0;
-            min-height: 100vh;
         }
         
         .container { 
-            max-width: 440px; 
+            max-width: 450px; 
             margin: 10px auto;
-            background: rgba(255, 255, 255, 0.97); 
-            padding: 30px 20px; 
-            border-radius: 35px; 
+            background: rgba(255, 255, 255, 0.98); 
+            padding: 25px 20px; 
+            border-radius: 30px; 
             border: 4px solid var(--primary);
-            box-shadow: 0 20px 50px rgba(183, 110, 121, 0.3); 
+            box-shadow: 0 15px 40px rgba(183, 110, 121, 0.2); 
         }
         
-        .logo-img { 
-            width: 140px; 
-            height: 140px; 
-            border-radius: 50%; 
-            margin: 0 auto 10px; 
-            border: 5px solid var(--primary);
-            background: white;
-            padding: 8px;
-            object-fit: contain;
+        .logo-img { width: 130px; height: 130px; border-radius: 50%; border: 5px solid var(--primary); background: white; padding: 5px; margin-bottom: 10px; }
+        .brand-logo { font-size: 28px; font-weight: bold; color: var(--secondary); margin-bottom: 5px; }
+
+        .ig-follow { 
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background: linear-gradient(45deg, #E1306C, #f77737, var(--primary));
+            color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; 
+            font-weight: 600; font-size: 14px; margin: 15px 0 25px; width: 85%;
         }
 
-        .brand-logo { font-size: 30px; font-weight: bold; color: var(--secondary); margin-bottom: 5px; }
-        
-        .type-selector {
-            background: #fff;
-            border: 2px solid var(--primary);
-            padding: 12px;
-            border-radius: 50px;
-            width: 90%;
-            font-size: 16px;
-            color: var(--text-dark);
-            font-weight: bold;
-            margin: 20px 0;
-            outline: none;
-            cursor: pointer;
-        }
-
-        .form-section { display: none; text-align: left; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .section-title { font-size: 18px; font-weight: bold; color: var(--secondary); margin: 25px 0 15px; text-transform: uppercase; border-bottom: 1px solid var(--primary); display: inline-block; }
 
         input, textarea, select { 
             width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #ddd; 
-            margin: 8px 0 15px; box-sizing: border-box; font-family: inherit;
+            margin: 8px 0 15px; box-sizing: border-box; font-family: inherit; font-size: 14px;
         }
 
-        label { font-weight: bold; font-size: 14px; color: #6d4c41; margin-left: 5px; }
+        label { display: block; text-align: left; font-weight: bold; font-size: 13px; color: #6d4c41; margin-left: 5px; }
 
-        .stars { display: flex; justify-content: center; font-size: 40px; color: #e0e0e0; cursor: pointer; margin-bottom: 15px; }
-        .star.active { color: var(--primary); }
+        .stars { display: flex; justify-content: center; font-size: 45px; color: #e0e0e0; cursor: pointer; margin: 10px 0; }
+        .star.active { color: var(--primary); text-shadow: 0 0 10px rgba(212, 163, 115, 0.3); }
 
-        .chip-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; justify-content: center;}
-        .chip { background: #fffaf0; padding: 8px 12px; border-radius: 12px; font-size: 13px; cursor: pointer; border: 1px solid #eee; }
+        .chip-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; justify-content: center; }
+        .chip { background: #fffaf0; padding: 8px 12px; border-radius: 12px; font-size: 12px; cursor: pointer; border: 1px solid #fce4ec; }
         
         .submit-btn { 
-            background: var(--text-dark); color: white; border: none; padding: 16px; 
-            border-radius: 50px; width: 100%; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 10px;
+            background: var(--text-dark); color: white; border: none; padding: 15px; 
+            border-radius: 50px; width: 100%; cursor: pointer; font-weight: bold; font-size: 16px; margin: 10px 0;
         }
         .submit-btn:disabled { background: #ccc; }
 
-        .radio-box { display: flex; gap: 15px; margin-top: 5px; }
+        .enquiry-box { background: #fffcf9; padding: 20px 15px; border-radius: 20px; border: 1px dashed var(--primary); margin-top: 30px; }
     </style>
 </head>
 <body>
@@ -92,88 +73,86 @@
 <div class="container">
     <img src="https://i.postimg.cc/cZJsYWrb/filelogo.png" alt="3G Flora Logo" class="logo-img">
     <div class="brand-logo">3G Flora</div>
+    <p style="font-style: italic; font-size: 14px; margin-top: 0;">Preserving Nature in Art</p>
 
-    <select id="formType" class="type-selector" onchange="toggleForm()">
-        <option value="">-- Choose Option --</option>
-        <option value="enquiry">New Order Enquiry</option>
-        <option value="feedback">Share Feedback</option>
-    </select>
+    <a href="https://www.instagram.com/3g_flora?igsh=MXFnNXZkMnk2a2Juag==" target="_blank" class="ig-follow">
+        📷 Follow us on Instagram
+    </a>
 
-    <form id="masterForm">
-        <div id="common-fields" style="display:none; text-align:left;">
-            <label>Full Name *</label>
-            <input type="text" id="name" required>
-            
-            <label>Mobile / Instagram ID *</label>
-            <input type="text" id="contact" required>
+    <form id="mainForm">
+        <label>Your Name *</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+        
+        <label>Mobile Number / Instagram ID *</label>
+        <input type="text" id="contact" placeholder="How can we reach you?" required>
+
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+        <div class="section-title">Share Feedback</div>
+        <p style="font-size: 14px; margin-bottom: 5px;">How was your experience?</p>
+        <div class="stars" id="starRating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
         </div>
+        <div class="chip-container" id="suggestionList"></div>
+        <textarea id="feedbackText" placeholder="Your feedback helps us grow..."></textarea>
+        
+        <button type="submit" id="submitFeedback" class="submit-btn">Submit Feedback</button>
 
-        <div id="enquiry-section" class="form-section">
-            <label>1. Select Product *</label>
-            <select id="productName">
-                <option value="Keychain">Keychain</option>
+        <div class="enquiry-box">
+            <div class="section-title">New Order Enquiry</div>
+            
+            <label>Select Product *</label>
+            <select id="enquiryProduct">
+                <option value="None">-- Select a Product --</option>
+                <option value="Jewellery">Jewellery</option>
                 <option value="Photo Frame">Photo Frame</option>
-                <option value="Varmala Preservation">Varmala Preservation</option>
-                <option value="Name Plate Preservation">Name Plate Preservation</option>
+                <option value="Clock">Clock</option>
+                <option value="Preservation">Preservation</option>
+                <option value="Return Gift">Return Gift</option>
+                <option value="Name Plate">Name Plate</option>
+                <option value="Other Customisation">Other Customisation</option>
             </select>
 
-            <label>2. Requirements</label>
-            <textarea id="requirements" placeholder="Colors, shapes, etc."></textarea>
+            <label>Specific Requirements</label>
+            <textarea id="enquiryReqs" placeholder="Describe your dream piece..."></textarea>
 
-            <label>3. Budget (₹)</label>
-            <input type="number" id="budget">
+            <label>Estimated Budget (₹)</label>
+            <input type="number" id="enquiryBudget" placeholder="e.g. 1500">
 
-            <label>4. Required Delivery Date</label>
-            <input type="date" id="deliveryDate">
+            <label>Required Delivery Date</label>
+            <input type="date" id="enquiryDate">
 
-            <label>5. Do you need sample ref images?</label>
-            <div class="radio-box">
-                <label style="font-weight:normal"><input type="radio" name="ref" value="Yes" checked> Yes</label>
-                <label style="font-weight:normal"><input type="radio" name="ref" value="No"> No</label>
-            </div>
+            <label>Need sample reference images?</label>
+            <select id="enquiryRef">
+                <option value="Yes">Yes, please send samples</option>
+                <option value="No">No, I have my own idea</option>
+            </select>
+
+            <button type="button" id="submitEnquiry" class="submit-btn" style="background: var(--secondary);">Send Enquiry</button>
         </div>
-
-        <div id="feedback-section" class="form-section">
-            <label style="display:block; text-align:center;">Rate your experience:</label>
-            <div class="stars" id="starRating">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
-            </div>
-            <div class="chip-container" id="suggestionList"></div>
-            <textarea id="feedbackText" placeholder="Share your thoughts..."></textarea>
-        </div>
-
-        <button type="submit" id="submitBtn" class="submit-btn" style="display:none;">Submit</button>
     </form>
 </div>
 
 <script>
     const scriptURL = "https://script.google.com/macros/s/AKfycbz8xO_ucuKjITosMVE62XvjnxqofwLyA7mfNEQOiqQd7BPPtU-HRSOzRDPJp-SCIGxEPQ/exec";
-    let currentRating = 0;
+    let selectedRating = 0;
 
-    function toggleForm() {
-        const type = document.getElementById('formType').value;
-        document.getElementById('common-fields').style.display = type ? 'block' : 'none';
-        document.getElementById('enquiry-section').style.display = type === 'enquiry' ? 'block' : 'none';
-        document.getElementById('feedback-section').style.display = type === 'feedback' ? 'block' : 'none';
-        document.getElementById('submitBtn').style.display = type ? 'block' : 'none';
-        
-        // Reset requirements for the specific form
-        if(type === 'enquiry') document.getElementById('feedbackText').required = false;
-        if(type === 'feedback') document.getElementById('feedbackText').required = true;
-    }
-
-    // Star Logic
+    // Star Rating Logic
     document.querySelectorAll('.star').forEach(star => {
         star.onclick = () => {
-            currentRating = star.dataset.value;
-            document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('active', i < currentRating));
+            selectedRating = star.dataset.value;
+            document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('active', i < selectedRating));
+            
             const list = document.getElementById('suggestionList');
             list.innerHTML = '';
-            const hints = currentRating > 3 ? ["Stunning quality!", "Love the preservation!", "Perfect packaging"] : ["Delivery was slow", "Finish could be better"];
+            const hints = selectedRating > 3 
+                ? ["Love the preservation!", "Perfect quality", "Exquisite work!"] 
+                : ["Late delivery", "Finishing issues", "More bubbles than expected"];
+            
             hints.forEach(h => {
                 const c = document.createElement('div'); c.className='chip'; c.innerText=h;
                 c.onclick = () => document.getElementById('feedbackText').value = h;
@@ -182,42 +161,56 @@
         };
     });
 
-    document.getElementById('masterForm').addEventListener('submit', e => {
+    // Handle Feedback Submit
+    document.getElementById('submitFeedback').onclick = (e) => {
         e.preventDefault();
-        const btn = document.getElementById('submitBtn');
-        const type = document.getElementById('formType').value;
-        
+        sendData("Feedback");
+    };
+
+    // Handle Enquiry Submit
+    document.getElementById('submitEnquiry').onclick = (e) => {
+        const prod = document.getElementById('enquiryProduct').value;
+        if(prod === "None") { alert("Please select a product for enquiry."); return; }
+        sendData("Enquiry");
+    };
+
+    function sendData(type) {
+        const name = document.getElementById('name').value;
+        const contact = document.getElementById('contact').value;
+        if(!name || !contact) { alert("Please enter Name and Contact details first."); return; }
+
+        const btn = type === "Feedback" ? document.getElementById('submitFeedback') : document.getElementById('submitEnquiry');
         btn.disabled = true;
         btn.innerText = "Sending...";
 
         const formData = new FormData();
         formData.append("FormType", type);
         formData.append("Timestamp", new Date().toLocaleString());
-        formData.append("Name", document.getElementById('name').value);
-        formData.append("Contact", document.getElementById('contact').value);
-
-        if(type === 'enquiry') {
-            formData.append("Product", document.getElementById('productName').value);
-            formData.append("Requirements", document.getElementById('requirements').value);
-            formData.append("Budget", document.getElementById('budget').value);
-            formData.append("DeliveryDate", document.getElementById('deliveryDate').value);
-            formData.append("NeedsRef", document.querySelector('input[name="ref"]:checked').value);
-        } else {
-            formData.append("Rating", currentRating);
-            formData.append("Feedback", document.getElementById('feedbackText').value);
-        }
+        formData.append("Name", name);
+        formData.append("Contact", contact);
+        
+        // Enquiry Fields
+        formData.append("Product", document.getElementById('enquiryProduct').value);
+        formData.append("Requirements", document.getElementById('enquiryReqs').value);
+        formData.append("Budget", document.getElementById('enquiryBudget').value);
+        formData.append("DeliveryDate", document.getElementById('enquiryDate').value);
+        formData.append("NeedsRef", document.getElementById('enquiryRef').value);
+        
+        // Feedback Fields
+        formData.append("Rating", selectedRating);
+        formData.append("Feedback", document.getElementById('feedbackText').value);
 
         fetch(scriptURL, { method: 'POST', body: formData })
             .then(() => {
-                alert("Success! 🌸 Your details have been sent to 3G Flora.");
+                alert("Thank you! Your " + type + " has been sent successfully. 🌸");
                 location.reload();
             })
             .catch(() => {
-                alert("Error. Please try again.");
+                alert("Something went wrong. Please check your internet.");
                 btn.disabled = false;
                 btn.innerText = "Submit";
             });
-    });
+    }
 </script>
 
 </body>
