@@ -9,37 +9,59 @@
         .container { max-width: 400px; margin: auto; background: white; padding: 30px; border-radius: 15px; border: 1px solid #fce4ec; box-shadow: 0 8px 20px rgba(214, 51, 132, 0.1); }
         .brand-logo { font-size: 28px; font-weight: bold; color: #d81b60; margin-bottom: 5px; }
         .brand-tagline { font-size: 14px; font-style: italic; color: #888; margin-bottom: 25px; }
-        .ig-follow { display: inline-block; background: #d81b60; color: white; padding: 14px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 25px; width: 85%; }
+        
+        /* Instagram Follow Button */
+        .ig-follow { 
+            display: inline-block; background: #d81b60; color: white; padding: 14px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 25px; width: 85%; transition: 0.3s;
+        }
+        .ig-follow:active { transform: scale(0.98); background: #ad1457; }
+
         .stars { font-size: 42px; cursor: pointer; color: #eee; margin: 15px 0; }
         .stars span.active { color: #f48fb1; }
         #ai-section { display: none; margin-top: 20px; text-align: left; }
         .status-msg { font-size: 14px; margin-bottom: 10px; color: #d81b60; font-weight: bold; }
-        .chip { background: #fff0f5; padding: 10px; border-radius: 10px; margin: 8px 0; font-size: 13px; cursor: pointer; border: 1px dashed #f48fb1; color: #4a4a4a; }
+        .chip { background: #fff0f5; padding: 10px; border-radius: 10px; margin: 8px 0; font-size: 13px; cursor: pointer; border: 1px dashed #f48fb1; color: #4a4a4a; line-height: 1.4; }
         textarea { width: 100%; height: 90px; border-radius: 10px; border: 1px solid #fce4ec; padding: 12px; box-sizing: border-box; margin-top: 10px; }
         .submit-btn { background: #4a4a4a; color: white; border: none; padding: 12px; border-radius: 8px; margin-top: 15px; width: 100%; cursor: pointer; font-weight: bold; }
     </style>
 </head>
 <body>
+
 <div class="container">
     <div class="brand-logo">3G Flora</div>
     <div class="brand-tagline">Preserving Nature in Art</div>
-    <a href="https://www.instagram.com/3g_flora_/" class="ig-follow">Follow on Instagram</a>
-    <div style="font-size: 14px; margin-top: 10px;">Rate your experience:</div>
+
+    <a href="https://www.instagram.com/3g_flora_/?utm_source=qr" class="ig-follow">
+        Follow on Instagram
+    </a>
+
+    <div style="font-size: 14px; margin-top: 10px;">How would you rate your jewelry?</div>
     <div class="stars" id="star-rating">
         <span onclick="updateRating(1)">★</span><span onclick="updateRating(2)">★</span><span onclick="updateRating(3)">★</span><span onclick="updateRating(4)">★</span><span onclick="updateRating(5)">★</span>
     </div>
+
     <div id="ai-section">
         <p class="status-msg" id="msg-text"></p>
         <div id="suggestion-list"></div>
-        <textarea id="review-input" placeholder="Your review..."></textarea>
+        <textarea id="review-input" placeholder="Add your personal touch..."></textarea>
         <button class="submit-btn" onclick="alert('Thank you for supporting 3G Flora!')">Submit Review</button>
     </div>
 </div>
+
 <script>
     const reviews = {
-        1: ["Minor imperfections in resin.", "Delivery took longer than discussed.", "Piece looks different from photos."],
-        5: ["Beautifully handcrafted! Stunning botanical details.", "Perfect unique gift. I love it!", "Excellent quality and lovely packaging."]
+        1: [
+            "Minor imperfections in the resin.",
+            "Delivery/pickup took longer than discussed.",
+            "Piece looks different from photos."
+        ],
+        5: [
+            "Beautifully handcrafted! Stunning botanical details.",
+            "Perfect unique gift. I love it!",
+            "Excellent quality and lovely packaging. Highly impressed."
+        ]
     };
+
     function updateRating(n) {
         const stars = document.querySelectorAll('.stars span');
         stars.forEach((s, i) => s.classList.toggle('active', i < n));
@@ -47,14 +69,18 @@
         const list = document.getElementById('suggestion-list');
         const msg = document.getElementById('msg-text');
         list.innerHTML = '';
+
         if (n <= 2) {
             msg.innerText = "What can we improve?";
             reviews[1].forEach(t => addChip(t));
         } else if (n === 5) {
             msg.innerText = "Glad you liked it! Tap to auto-fill:";
             reviews[5].forEach(t => addChip(t));
-        } else { msg.innerText = "Thank you! Add a comment:"; }
+        } else {
+            msg.innerText = "Thank you! Add a comment:";
+        }
     }
+
     function addChip(text) {
         const div = document.createElement('div');
         div.className = 'chip';
@@ -63,5 +89,6 @@
         document.getElementById('suggestion-list').appendChild(div);
     }
 </script>
+
 </body>
 </html>
