@@ -5,36 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3G Flora - Feedback</title>
     <style>
-        body { font-family: 'Georgia', serif; text-align: center; background: #fff5f8; padding: 20px; color: #4a4a4a; }
-        .container { max-width: 400px; margin: auto; background: white; padding: 30px; border-radius: 15px; border: 1px solid #fce4ec; box-shadow: 0 8px 20px rgba(214, 51, 132, 0.1); }
-        .brand-logo { font-size: 28px; font-weight: bold; color: #d81b60; margin-bottom: 5px; }
-        .brand-tagline { font-size: 14px; font-style: italic; color: #888; margin-bottom: 25px; }
-        
-        /* Instagram Follow Button */
-        .ig-follow { 
-            display: inline-block; background: #d81b60; color: white; padding: 14px 20px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 25px; width: 85%; transition: 0.3s;
+        /* Theme Colors: Rose Gold (#d4a373), Dusty Pink (#b76e79), Soft Cream (#fffaf0) */
+        body { 
+            font-family: 'Georgia', serif; 
+            text-align: center; 
+            background-color: #fff5f8;
+            /* Subtle floral pattern background */
+            background-image: url('https://www.transparenttextures.com/patterns/cream-pixels.png');
+            padding: 20px; 
+            color: #5d4037; 
         }
-        .ig-follow:active { transform: scale(0.98); background: #ad1457; }
+        .container { 
+            max-width: 400px; 
+            margin: auto; 
+            background: rgba(255, 255, 255, 0.95); 
+            padding: 30px; 
+            border-radius: 30px; 
+            border: 2px solid #d4a373; /* Rose Gold Border */
+            box-shadow: 0 15px 35px rgba(183, 110, 121, 0.2); 
+        }
+        
+        /* Logo Styling to match your circle logo */
+        .logo-img { 
+            width: 130px; 
+            height: 130px; 
+            border-radius: 50%; 
+            margin-bottom: 10px; 
+            border: 3px solid #d4a373;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
 
-        .stars { font-size: 42px; cursor: pointer; color: #eee; margin: 15px 0; }
-        .stars span.active { color: #f48fb1; }
-        #ai-section { display: none; margin-top: 20px; text-align: left; }
-        .status-msg { font-size: 14px; margin-bottom: 10px; color: #d81b60; font-weight: bold; }
-        .chip { background: #fff0f5; padding: 10px; border-radius: 10px; margin: 8px 0; font-size: 13px; cursor: pointer; border: 1px dashed #f48fb1; color: #4a4a4a; line-height: 1.4; }
-        textarea { width: 100%; height: 90px; border-radius: 10px; border: 1px solid #fce4ec; padding: 12px; box-sizing: border-box; margin-top: 10px; }
-        .submit-btn { background: #4a4a4a; color: white; border: none; padding: 12px; border-radius: 8px; margin-top: 15px; width: 100%; cursor: pointer; font-weight: bold; }
+        .brand-logo { font-size: 28px; font-weight: bold; color: #b76e79; margin-bottom: 5px; letter-spacing: 1px; }
+        .brand-tagline { font-size: 14px; font-style: italic; color: #8d6e63; margin-bottom: 25px; }
+        
+        /* Premium Instagram Button */
+        .ig-follow { 
+            display: inline-block; 
+            background: linear-gradient(45deg, #b76e79, #d4a373);
+            color: white; 
+            padding: 15px 25px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            margin-bottom: 30px; 
+            width: 80%;
+            box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
+        }
+
+        /* Rose Gold Stars */
+        .stars { font-size: 45px; cursor: pointer; color: #e0e0e0; margin: 15px 0; transition: 0.3s; }
+        .stars span.active { 
+            color: #d4a373; 
+            text-shadow: 0 0 10px rgba(212, 163, 115, 0.5);
+        }
+        
+        #ai-section { display: none; margin-top: 25px; text-align: left; animation: fadeIn 0.8s; }
+        .status-msg { font-size: 15px; margin-bottom: 12px; color: #b76e79; font-weight: bold; text-align: center; }
+        
+        /* Floral Suggestion Chips */
+        .chip { 
+            background: #fffafa; 
+            padding: 12px; 
+            border-radius: 15px; 
+            margin: 10px 0; 
+            font-size: 13.5px; 
+            cursor: pointer; 
+            border: 1px solid #fce4ec;
+            color: #5d4037;
+            transition: 0.3s;
+        }
+        .chip:hover { background: #fce4ec; border-color: #d4a373; }
+        
+        textarea { 
+            width: 100%; 
+            height: 100px; 
+            border-radius: 15px; 
+            border: 1px solid #d4a373; 
+            padding: 15px; 
+            box-sizing: border-box; 
+            margin-top: 15px;
+            background: #fffcfc;
+        }
+        .submit-btn { 
+            background: #5d4037; 
+            color: white; 
+            border: none; 
+            padding: 14px; 
+            border-radius: 50px; 
+            margin-top: 20px; 
+            width: 100%; 
+            cursor: pointer; 
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <img src="logo.jpg" alt="3G Flora Logo" class="logo-img" onerror="this.style.display='none'">
+    
     <div class="brand-logo">3G Flora</div>
     <div class="brand-tagline">Preserving Nature in Art</div>
-<a href="instagram://user?username=3g_flora_" class="ig-follow" onclick="window.location.href='https://www.instagram.com/3g_flora_/?utm_source=qr'; return false;">
-    Follow on Instagram
-</a>
-    
-    <div style="font-size: 14px; margin-top: 10px;">How would you rate your jewelry?</div>
+
+    <a href="instagram://user?username=3g_flora_" class="ig-follow" onclick="window.location.href='https://www.instagram.com/3g_flora_/?utm_source=qr'; return false;">
+        Follow on Instagram
+    </a>
+
+    <div style="font-size: 16px; margin-top: 10px; font-weight: bold; color: #8d6e63;">How was your experience?</div>
     <div class="stars" id="star-rating">
         <span onclick="updateRating(1)">★</span><span onclick="updateRating(2)">★</span><span onclick="updateRating(3)">★</span><span onclick="updateRating(4)">★</span><span onclick="updateRating(5)">★</span>
     </div>
@@ -42,41 +123,42 @@
     <div id="ai-section">
         <p class="status-msg" id="msg-text"></p>
         <div id="suggestion-list"></div>
-        <textarea id="review-input" placeholder="Add your personal touch..."></textarea>
-        <button class="submit-btn" onclick="alert('Thank you for supporting 3G Flora!')">Submit Review</button>
+        <textarea id="review-input" placeholder="Your thoughts here..."></textarea>
+        <button class="submit-btn" onclick="alert('Thank you for supporting our floral art!')">Submit Feedback</button>
     </div>
 </div>
 
 <script>
     const reviews = {
         1: [
-            "Minor imperfections in the resin.",
-            "The piece looks different from the photos.",
-            "I hope the delivery process can be improved."
+            "The piece had more bubbles in the resin than expected.",
+            "Pickup/Delivery timing could be improved.",
+            "The product colors looked different than the online photos."
         ],
         5: [
-            "Beautifully handcrafted! Stunning botanical details.",
-            "Perfect unique gift. I love it!",
-            "Excellent quality and lovely packaging. Highly impressed."
+            "Stunning botanical preservation! Truly a unique piece of art.",
+            "The rose gold details and flowers are beautiful. Highly recommend!",
+            "Exquisite quality and the packaging made it feel so special."
         ]
     };
 
     function updateRating(n) {
         const stars = document.querySelectorAll('.stars span');
         stars.forEach((s, i) => s.classList.toggle('active', i < n));
+        
         document.getElementById('ai-section').style.display = 'block';
         const list = document.getElementById('suggestion-list');
         const msg = document.getElementById('msg-text');
         list.innerHTML = '';
 
         if (n <= 2) {
-            msg.innerText = "What can we improve?";
+            msg.innerText = "We're sorry! How can we make it better?";
             reviews[1].forEach(t => addChip(t));
         } else if (n === 5) {
-            msg.innerText = "Glad you liked it! Tap to auto-fill:";
+            msg.innerText = "We're delighted! Choose a review to share:";
             reviews[5].forEach(t => addChip(t));
         } else {
-            msg.innerText = "Thank you! Add a comment:";
+            msg.innerText = "Thank you! We appreciate your support:";
         }
     }
 
