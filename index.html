@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3G Flora - Feedback</title>
+    <title>3G Flora - Connect With Us</title>
     <style>
         :root {
             --primary: #d4a373;
@@ -27,134 +27,64 @@
         
         .container { 
             max-width: 440px; 
-            margin: 20px auto;
+            margin: 10px auto;
             background: rgba(255, 255, 255, 0.97); 
-            padding: 35px 25px; 
+            padding: 30px 20px; 
             border-radius: 35px; 
             border: 4px solid var(--primary);
             box-shadow: 0 20px 50px rgba(183, 110, 121, 0.3); 
         }
         
         .logo-img { 
-            width: 180px; 
-            height: 180px; 
+            width: 140px; 
+            height: 140px; 
             border-radius: 50%; 
-            margin: 0 auto 15px; 
-            border: 6px solid var(--primary);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            object-fit: contain;
-            display: block;
+            margin: 0 auto 10px; 
+            border: 5px solid var(--primary);
             background: white;
-            padding: 10px;
+            padding: 8px;
+            object-fit: contain;
         }
 
-        .brand-logo { 
-            font-size: 32px; 
-            font-weight: bold; 
-            color: var(--secondary); 
-            letter-spacing: 2px;
-            margin: 10px 0 5px;
-        }
+        .brand-logo { font-size: 30px; font-weight: bold; color: var(--secondary); margin-bottom: 5px; }
         
-        .brand-tagline { 
-            font-size: 15px; 
-            font-style: italic; 
-            color: #8d6e63; 
-            margin-bottom: 25px;
-        }
-        
-        .ig-follow { 
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(45deg, #E1306C, #f77737, var(--primary));
-            color: white; 
-            padding: 14px 25px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: 600; 
-            font-size: 15px;
-            margin-bottom: 25px;
-            width: 85%;
-            box-shadow: 0 6px 15px rgba(225, 48, 108, 0.3);
-        }
-
-        .stars { 
-            display: flex;
-            justify-content: center;
-            font-size: 45px; 
-            color: #e0e0e0; 
-            margin: 15px 0; 
+        .type-selector {
+            background: #fff;
+            border: 2px solid var(--primary);
+            padding: 12px;
+            border-radius: 50px;
+            width: 90%;
+            font-size: 16px;
+            color: var(--text-dark);
+            font-weight: bold;
+            margin: 20px 0;
+            outline: none;
             cursor: pointer;
         }
-        
-        .star { transition: color 0.2s; padding: 0 5px; }
-        .star.active { 
-            color: var(--primary); 
-            text-shadow: 0 0 10px rgba(212, 163, 115, 0.5);
-        }
-        
-        #ai-section { display: none; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        .status-msg { 
-            font-size: 16px; 
-            margin-bottom: 15px; 
-            color: var(--secondary); 
-            font-weight: bold; 
-        }
-        
-        .chip-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 15px;
+
+        .form-section { display: none; text-align: left; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        input, textarea, select { 
+            width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #ddd; 
+            margin: 8px 0 15px; box-sizing: border-box; font-family: inherit;
         }
 
-        .chip { 
-            background: #fffaf0; 
-            padding: 10px 14px; 
-            border-radius: 15px; 
-            font-size: 13px; 
-            cursor: pointer; 
-            border: 1px solid #eee;
-            color: var(--text-dark);
-            transition: all 0.2s;
-        }
-        
-        .chip:hover { background: #fce4ec; border-color: var(--secondary); }
-        
-        input[type="text"], textarea { 
-            width: 100%; 
-            padding: 14px; 
-            border-radius: 15px; 
-            border: 2px solid #eee; 
-            margin: 8px 0;
-            box-sizing: border-box;
-            font-family: inherit;
-            outline: none;
-        }
+        label { font-weight: bold; font-size: 14px; color: #6d4c41; margin-left: 5px; }
 
-        input:focus, textarea:focus { border-color: var(--primary); }
-        
-        textarea { height: 100px; resize: none; }
+        .stars { display: flex; justify-content: center; font-size: 40px; color: #e0e0e0; cursor: pointer; margin-bottom: 15px; }
+        .star.active { color: var(--primary); }
+
+        .chip-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; justify-content: center;}
+        .chip { background: #fffaf0; padding: 8px 12px; border-radius: 12px; font-size: 13px; cursor: pointer; border: 1px solid #eee; }
         
         .submit-btn { 
-            background: var(--text-dark); 
-            color: white; 
-            border: none; 
-            padding: 16px; 
-            border-radius: 50px; 
-            width: 100%; 
-            cursor: pointer; 
-            font-weight: bold;
-            font-size: 16px;
-            margin-top: 15px;
+            background: var(--text-dark); color: white; border: none; padding: 16px; 
+            border-radius: 50px; width: 100%; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 10px;
         }
-
         .submit-btn:disabled { background: #ccc; }
+
+        .radio-box { display: flex; gap: 15px; margin-top: 5px; }
     </style>
 </head>
 <body>
@@ -162,34 +92,61 @@
 <div class="container">
     <img src="https://i.postimg.cc/cZJsYWrb/filelogo.png" alt="3G Flora Logo" class="logo-img">
     <div class="brand-logo">3G Flora</div>
-    <div class="brand-tagline">Preserving Nature in Art</div>
 
-    <a href="https://www.instagram.com/3g_flora?igsh=MXFnNXZkMnk2a2Juag==" target="_blank" class="ig-follow">
-        📷 Follow us on Instagram
-    </a>
+    <select id="formType" class="type-selector" onchange="toggleForm()">
+        <option value="">-- Choose Option --</option>
+        <option value="enquiry">New Order Enquiry</option>
+        <option value="feedback">Share Feedback</option>
+    </select>
 
-    <form id="feedbackForm">
-        <input type="text" id="userName" placeholder="Your Name *" required>
-        <input type="text" id="userContact" placeholder="Mobile or Instagram ID">
-
-        <div style="font-size: 16px; margin: 20px 0 5px; font-weight: bold;">
-            Rate your experience:
-        </div>
-        
-        <div class="stars" id="starRating">
-            <span class="star" data-value="1">★</span>
-            <span class="star" data-value="2">★</span>
-            <span class="star" data-value="3">★</span>
-            <span class="star" data-value="4">★</span>
-            <span class="star" data-value="5">★</span>
+    <form id="masterForm">
+        <div id="common-fields" style="display:none; text-align:left;">
+            <label>Full Name *</label>
+            <input type="text" id="name" required>
+            
+            <label>Mobile / Instagram ID *</label>
+            <input type="text" id="contact" required>
         </div>
 
-        <div id="ai-section">
-            <p class="status-msg" id="msgText"></p>
+        <div id="enquiry-section" class="form-section">
+            <label>1. Select Product *</label>
+            <select id="productName">
+                <option value="Keychain">Keychain</option>
+                <option value="Photo Frame">Photo Frame</option>
+                <option value="Varmala Preservation">Varmala Preservation</option>
+                <option value="Name Plate Preservation">Name Plate Preservation</option>
+            </select>
+
+            <label>2. Requirements</label>
+            <textarea id="requirements" placeholder="Colors, shapes, etc."></textarea>
+
+            <label>3. Budget (₹)</label>
+            <input type="number" id="budget">
+
+            <label>4. Required Delivery Date</label>
+            <input type="date" id="deliveryDate">
+
+            <label>5. Do you need sample ref images?</label>
+            <div class="radio-box">
+                <label style="font-weight:normal"><input type="radio" name="ref" value="Yes" checked> Yes</label>
+                <label style="font-weight:normal"><input type="radio" name="ref" value="No"> No</label>
+            </div>
+        </div>
+
+        <div id="feedback-section" class="form-section">
+            <label style="display:block; text-align:center;">Rate your experience:</label>
+            <div class="stars" id="starRating">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
             <div class="chip-container" id="suggestionList"></div>
-            <textarea id="reviewText" placeholder="Tell us more about your order..." required></textarea>
-            <button type="submit" class="submit-btn" id="submitBtn">Submit Feedback</button>
+            <textarea id="feedbackText" placeholder="Share your thoughts..."></textarea>
         </div>
+
+        <button type="submit" id="submitBtn" class="submit-btn" style="display:none;">Submit</button>
     </form>
 </div>
 
@@ -197,82 +154,68 @@
     const scriptURL = "https://script.google.com/macros/s/AKfycbz8xO_ucuKjITosMVE62XvjnxqofwLyA7mfNEQOiqQd7BPPtU-HRSOzRDPJp-SCIGxEPQ/exec";
     let currentRating = 0;
 
-    const reviews = {
-        low: ["Bubbles in the resin", "Delivery was late", "Colors look different"],
-        neutral: ["Good piece, minor finish issues", "Beautiful concept", "Smooth delivery"],
-        high: ["Stunning art!", "Exquisite quality", "Perfect packaging!", "Highly recommend!"]
-    };
+    function toggleForm() {
+        const type = document.getElementById('formType').value;
+        document.getElementById('common-fields').style.display = type ? 'block' : 'none';
+        document.getElementById('enquiry-section').style.display = type === 'enquiry' ? 'block' : 'none';
+        document.getElementById('feedback-section').style.display = type === 'feedback' ? 'block' : 'none';
+        document.getElementById('submitBtn').style.display = type ? 'block' : 'none';
+        
+        // Reset requirements for the specific form
+        if(type === 'enquiry') document.getElementById('feedbackText').required = false;
+        if(type === 'feedback') document.getElementById('feedbackText').required = true;
+    }
 
-    const stars = document.querySelectorAll('.star');
-    stars.forEach(star => {
-        star.addEventListener('click', () => {
-            currentRating = star.getAttribute('data-value');
-            updateStars(currentRating);
-            showAISection(currentRating);
-        });
+    // Star Logic
+    document.querySelectorAll('.star').forEach(star => {
+        star.onclick = () => {
+            currentRating = star.dataset.value;
+            document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('active', i < currentRating));
+            const list = document.getElementById('suggestionList');
+            list.innerHTML = '';
+            const hints = currentRating > 3 ? ["Stunning quality!", "Love the preservation!", "Perfect packaging"] : ["Delivery was slow", "Finish could be better"];
+            hints.forEach(h => {
+                const c = document.createElement('div'); c.className='chip'; c.innerText=h;
+                c.onclick = () => document.getElementById('feedbackText').value = h;
+                list.appendChild(c);
+            });
+        };
     });
 
-    function updateStars(rating) {
-        stars.forEach((s, i) => {
-            s.classList.toggle('active', i < rating);
-        });
-    }
-
-    function showAISection(rating) {
-        const section = document.getElementById('ai-section');
-        const msg = document.getElementById('msgText');
-        const list = document.getElementById('suggestionList');
-        section.style.display = 'block';
-        list.innerHTML = '';
-
-        let choices = [];
-        if (rating <= 2) {
-            msg.innerText = "We're sorry! How can we improve?";
-            choices = reviews.low;
-        } else if (rating <= 4) {
-            msg.innerText = "Thank you! Any specific feedback?";
-            choices = reviews.neutral;
-        } else {
-            msg.innerText = "We're delighted! Choose a quick review:";
-            choices = reviews.high;
-        }
-
-        choices.forEach(text => {
-            const chip = document.createElement('div');
-            chip.className = 'chip';
-            chip.innerText = text;
-            chip.onclick = () => document.getElementById('reviewText').value = text;
-            list.appendChild(chip);
-        });
-    }
-
-    document.getElementById('feedbackForm').addEventListener('submit', e => {
+    document.getElementById('masterForm').addEventListener('submit', e => {
         e.preventDefault();
         const btn = document.getElementById('submitBtn');
+        const type = document.getElementById('formType').value;
+        
         btn.disabled = true;
         btn.innerText = "Sending...";
 
         const formData = new FormData();
+        formData.append("FormType", type);
         formData.append("Timestamp", new Date().toLocaleString());
-        formData.append("Name", document.getElementById('userName').value);
-        formData.append("Contact", document.getElementById('userContact').value);
-        formData.append("Rating", currentRating);
-        formData.append("Feedback", document.getElementById('reviewText').value);
+        formData.append("Name", document.getElementById('name').value);
+        formData.append("Contact", document.getElementById('contact').value);
+
+        if(type === 'enquiry') {
+            formData.append("Product", document.getElementById('productName').value);
+            formData.append("Requirements", document.getElementById('requirements').value);
+            formData.append("Budget", document.getElementById('budget').value);
+            formData.append("DeliveryDate", document.getElementById('deliveryDate').value);
+            formData.append("NeedsRef", document.querySelector('input[name="ref"]:checked').value);
+        } else {
+            formData.append("Rating", currentRating);
+            formData.append("Feedback", document.getElementById('feedbackText').value);
+        }
 
         fetch(scriptURL, { method: 'POST', body: formData })
-            .then(response => {
-                alert("Thank you! Your feedback has been preserved. 🌸");
-                document.getElementById('feedbackForm').reset();
-                document.getElementById('ai-section').style.display = 'none';
-                updateStars(0);
-                btn.disabled = false;
-                btn.innerText = "Submit Feedback";
+            .then(() => {
+                alert("Success! 🌸 Your details have been sent to 3G Flora.");
+                location.reload();
             })
-            .catch(error => {
-                console.error('Error!', error.message);
-                alert("Something went wrong. Please try again.");
+            .catch(() => {
+                alert("Error. Please try again.");
                 btn.disabled = false;
-                btn.innerText = "Submit Feedback";
+                btn.innerText = "Submit";
             });
     });
 </script>
