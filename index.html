@@ -1,223 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3G Flora - Connect With Us</title>
-    <style>
-        :root {
-            --primary: #d4a373;
-            --secondary: #b76e79;
-            --text-dark: #5d4037;
-            --bg-light: #fff8f0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3G Flora - Connect With Us</title>
 
-        body { 
-            font-family: 'Georgia', serif; 
-            text-align: center; 
-            background-color: var(--bg-light);
-            background-image: linear-gradient(rgba(255,248,240,0.9), rgba(255,248,240,0.9)),
-                              url('https://www.transparenttextures.com/patterns/flowers.png');
-            background-size: cover, 300px;
-            padding: 20px; 
-            color: var(--text-dark); 
-            margin: 0;
-            min-height: 100vh;
-        }
-        
-        .container { 
-            max-width: 440px; 
-            margin: 10px auto;
-            background: rgba(255, 255, 255, 0.97); 
-            padding: 30px 20px; 
-            border-radius: 35px; 
-            border: 4px solid var(--primary);
-            box-shadow: 0 20px 50px rgba(183, 110, 121, 0.3); 
-        }
-        
-        .logo-img { 
-            width: 140px; 
-            height: 140px; 
-            border-radius: 50%; 
-            margin: 0 auto 10px; 
-            border: 5px solid var(--primary);
-            background: white;
-            padding: 8px;
-            object-fit: contain;
-        }
+<style>
+:root {
+    --primary: #d4a373;
+    --secondary: #b76e79;
+    --text-dark: #5d4037;
+    --bg-light: #fff8f0;
+}
 
-        .brand-logo { font-size: 30px; font-weight: bold; color: var(--secondary); margin-bottom: 5px; }
-        
-        .type-selector {
-            background: #fff;
-            border: 2px solid var(--primary);
-            padding: 12px;
-            border-radius: 50px;
-            width: 90%;
-            font-size: 16px;
-            color: var(--text-dark);
-            font-weight: bold;
-            margin: 20px 0;
-            outline: none;
-            cursor: pointer;
-        }
+body {
+    font-family: 'Georgia', serif;
+    text-align: center;
+    background-color: var(--bg-light);
+    padding: 20px;
+    color: var(--text-dark);
+}
 
-        .form-section { display: none; text-align: left; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.container {
+    max-width: 440px;
+    margin: auto;
+    background: #fff;
+    padding: 25px;
+    border-radius: 25px;
+    border: 3px solid var(--primary);
+}
 
-        input, textarea, select { 
-            width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #ddd; 
-            margin: 8px 0 15px; box-sizing: border-box; font-family: inherit;
-        }
+.logo-img {
+    width: 120px;
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+}
 
-        label { font-weight: bold; font-size: 14px; color: #6d4c41; margin-left: 5px; }
+.brand-logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--secondary);
+}
 
-        .stars { display: flex; justify-content: center; font-size: 40px; color: #e0e0e0; cursor: pointer; margin-bottom: 15px; }
-        .star.active { color: var(--primary); }
+.type-selector {
+    width: 100%;
+    padding: 12px;
+    border-radius: 20px;
+    margin: 15px 0;
+}
 
-        .chip-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; justify-content: center;}
-        .chip { background: #fffaf0; padding: 8px 12px; border-radius: 12px; font-size: 13px; cursor: pointer; border: 1px solid #eee; }
-        
-        .submit-btn { 
-            background: var(--text-dark); color: white; border: none; padding: 16px; 
-            border-radius: 50px; width: 100%; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 10px;
-        }
-        .submit-btn:disabled { background: #ccc; }
+.form-section {
+    display: none;
+    text-align: left;
+}
 
-        .radio-box { display: flex; gap: 15px; margin-top: 5px; }
-    </style>
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+label {
+    font-weight: bold;
+}
+
+.stars {
+    font-size: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.star.active {
+    color: gold;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 25px;
+    background: var(--text-dark);
+    color: white;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+</style>
 </head>
+
 <body>
 
 <div class="container">
-    <img src="https://i.postimg.cc/cZJsYWrb/filelogo.png" alt="3G Flora Logo" class="logo-img">
-    <div class="brand-logo">3G Flora</div>
 
-    <select id="formType" class="type-selector" onchange="toggleForm()">
-        <option value="">-- Choose Option --</option>
-        <option value="enquiry">New Order Enquiry</option>
-        <option value="feedback">Share Feedback</option>
-    </select>
+<img src="https://i.postimg.cc/cZJsYWrb/filelogo.png" class="logo-img">
+<div class="brand-logo">3G Flora</div>
 
-    <form id="masterForm">
-        <div id="common-fields" style="display:none; text-align:left;">
-            <label>Full Name *</label>
-            <input type="text" id="name" required>
-            
-            <label>Mobile / Instagram ID *</label>
-            <input type="text" id="contact" required>
-        </div>
+<select id="formType" class="type-selector" onchange="toggleForm()">
+    <option value="">-- Choose Option --</option>
+    <option value="enquiry">New Order Enquiry</option>
+    <option value="feedback">Share Feedback</option>
+</select>
 
-        <div id="enquiry-section" class="form-section">
-            <label>1. Select Product *</label>
-            <select id="productName">
-                <option value="Keychain">Keychain</option>
-                <option value="Photo Frame">Photo Frame</option>
-                <option value="Varmala Preservation">Varmala Preservation</option>
-                <option value="Name Plate Preservation">Name Plate Preservation</option>
-            </select>
+<form id="masterForm">
 
-            <label>2. Requirements</label>
-            <textarea id="requirements" placeholder="Colors, shapes, etc."></textarea>
+<div id="common-fields" style="display:none;">
+<label>Full Name *</label>
+<input type="text" id="name" required>
 
-            <label>3. Budget (₹)</label>
-            <input type="number" id="budget">
+<label>Mobile / Instagram ID *</label>
+<input type="text" id="contact" required>
+</div>
 
-            <label>4. Required Delivery Date</label>
-            <input type="date" id="deliveryDate">
+<!-- Enquiry -->
+<div id="enquiry-section" class="form-section">
+<label>Product</label>
+<select id="productName">
+<option>Keychain</option>
+<option>Photo Frame</option>
+<option>Varmala Preservation</option>
+</select>
 
-            <label>5. Do you need sample ref images?</label>
-            <div class="radio-box">
-                <label style="font-weight:normal"><input type="radio" name="ref" value="Yes" checked> Yes</label>
-                <label style="font-weight:normal"><input type="radio" name="ref" value="No"> No</label>
-            </div>
-        </div>
+<label>Requirements</label>
+<textarea id="requirements"></textarea>
 
-        <div id="feedback-section" class="form-section">
-            <label style="display:block; text-align:center;">Rate your experience:</label>
-            <div class="stars" id="starRating">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
-            </div>
-            <div class="chip-container" id="suggestionList"></div>
-            <textarea id="feedbackText" placeholder="Share your thoughts..."></textarea>
-        </div>
+<label>Budget</label>
+<input type="number" id="budget">
 
-        <button type="submit" id="submitBtn" class="submit-btn" style="display:none;">Submit</button>
-    </form>
+<label>Delivery Date</label>
+<input type="date" id="deliveryDate">
+</div>
+
+<!-- Feedback -->
+<div id="feedback-section" class="form-section">
+<label style="text-align:center;display:block;">Rate:</label>
+
+<div class="stars">
+<span class="star" data-value="1">★</span>
+<span class="star" data-value="2">★</span>
+<span class="star" data-value="3">★</span>
+<span class="star" data-value="4">★</span>
+<span class="star" data-value="5">★</span>
+</div>
+
+<textarea id="feedbackText" placeholder="Write feedback..."></textarea>
+</div>
+
+<button type="submit" id="submitBtn" class="submit-btn" style="display:none;">Submit</button>
+
+</form>
 </div>
 
 <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbz8xO_ucuKjITosMVE62XvjnxqofwLyA7mfNEQOiqQd7BPPtU-HRSOzRDPJp-SCIGxEPQ/exec";
-    let currentRating = 0;
+const scriptURL = "https://script.google.com/macros/s/AKfycbz8xO_ucuKjITosMVE62XvjnxqofwLyA7mfNEQOiqQd7BPPtU-HRSOzRDPJp-SCIGxEPQ/exec";let currentRating = 0;
 
-    function toggleForm() {
-        const type = document.getElementById('formType').value;
-        document.getElementById('common-fields').style.display = type ? 'block' : 'none';
-        document.getElementById('enquiry-section').style.display = type === 'enquiry' ? 'block' : 'none';
-        document.getElementById('feedback-section').style.display = type === 'feedback' ? 'block' : 'none';
-        document.getElementById('submitBtn').style.display = type ? 'block' : 'none';
-        
-        // Reset requirements for the specific form
-        if(type === 'enquiry') document.getElementById('feedbackText').required = false;
-        if(type === 'feedback') document.getElementById('feedbackText').required = true;
+// Toggle form
+function toggleForm(){
+    let type = document.getElementById("formType").value;
+
+    document.getElementById("common-fields").style.display = type ? "block" : "none";
+    document.getElementById("enquiry-section").style.display = type === "enquiry" ? "block" : "none";
+    document.getElementById("feedback-section").style.display = type === "feedback" ? "block" : "none";
+    document.getElementById("submitBtn").style.display = type ? "block" : "none";
+}
+
+// Star rating
+document.querySelectorAll(".star").forEach(star => {
+    star.onclick = () => {
+        currentRating = star.dataset.value;
+
+        document.querySelectorAll(".star").forEach((s, i) => {
+            s.classList.toggle("active", i < currentRating);
+        });
+    };
+});
+
+// Submit
+document.getElementById("masterForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let type = document.getElementById("formType").value;
+
+    // Validation
+    if(type === "feedback" && currentRating == 0){
+        alert("Please select rating ⭐");
+        return;
     }
 
-    // Star Logic
-    document.querySelectorAll('.star').forEach(star => {
-        star.onclick = () => {
-            currentRating = star.dataset.value;
-            document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('active', i < currentRating));
-            const list = document.getElementById('suggestionList');
-            list.innerHTML = '';
-            const hints = currentRating > 3 ? ["Stunning quality!", "Love the preservation!", "Perfect packaging"] : ["Delivery was slow", "Finish could be better"];
-            hints.forEach(h => {
-                const c = document.createElement('div'); c.className='chip'; c.innerText=h;
-                c.onclick = () => document.getElementById('feedbackText').value = h;
-                list.appendChild(c);
-            });
-        };
+    let formData = new FormData();
+
+    formData.append("Type", type);
+    formData.append("Name", document.getElementById("name").value);
+    formData.append("Contact", document.getElementById("contact").value);
+
+    if(type === "enquiry"){
+        formData.append("Product", document.getElementById("productName").value);
+        formData.append("Requirements", document.getElementById("requirements").value);
+        formData.append("Budget", document.getElementById("budget").value);
+        formData.append("Date", document.getElementById("deliveryDate").value);
+    } else {
+        formData.append("Rating", currentRating);
+        formData.append("Feedback", document.getElementById("feedbackText").value);
+    }
+
+    fetch(scriptURL, {
+        method: "POST",
+        body: formData
+    })
+    .then(() => {
+        alert("Submitted Successfully 🌸");
+        location.reload();
+    })
+    .catch(() => {
+        alert("Error submitting form");
     });
-
-    document.getElementById('masterForm').addEventListener('submit', e => {
-        e.preventDefault();
-        const btn = document.getElementById('submitBtn');
-        const type = document.getElementById('formType').value;
-        
-        btn.disabled = true;
-        btn.innerText = "Sending...";
-
-        const formData = new FormData();
-        formData.append("FormType", type);
-        formData.append("Timestamp", new Date().toLocaleString());
-        formData.append("Name", document.getElementById('name').value);
-        formData.append("Contact", document.getElementById('contact').value);
-
-        if(type === 'enquiry') {
-            formData.append("Product", document.getElementById('productName').value);
-            formData.append("Requirements", document.getElementById('requirements').value);
-            formData.append("Budget", document.getElementById('budget').value);
-            formData.append("DeliveryDate", document.getElementById('deliveryDate').value);
-            formData.append("NeedsRef", document.querySelector('input[name="ref"]:checked').value);
-        } else {
-            formData.append("Rating", currentRating);
-            formData.append("Feedback", document.getElementById('feedbackText').value);
-        }
-
-        fetch(scriptURL, { method: 'POST', body: formData })
-            .then(() => {
-                alert("Success! 🌸 Your details have been sent to 3G Flora.");
-                location.reload();
-            })
-            .catch(() => {
-                alert("Error. Please try again.");
-                btn.disabled = false;
-                btn.innerText = "Submit";
-            });
-    });
+});
 </script>
 
 </body>
