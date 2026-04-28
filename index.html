@@ -77,11 +77,11 @@
 </div>
 
 <script>
-    // 1. YOUR EXACT GOOGLE SCRIPT URL
-    const scriptURL = "https://script.google.com/macros/s/AKfycbz8xO_ucuKjITosMVE62XvjnxqofwLyA7mfNEQOiqQd7BPPtU-HRSOzRDPJp-SCIGxEPQ/exec";
+    // 1. YOUR GOOGLE SCRIPT URL
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwgr7y2iKM2xNPhp-tYfzc-7uCx3hB6AgChpIrisbDvkwuJtDcTEKsLhaWOpknlaIVXFA/exec";
     
-    // 2. PUT YOUR WHATSAPP NUMBER HERE (Keep the 91, replace the X's)
-    const myWhatsAppNumber = "7083642528"; 
+    // 2. YOUR WHATSAPP NUMBER
+    const myWhatsAppNumber = "917083642528"; 
 
     let selectedRating = 0;
 
@@ -125,10 +125,12 @@
         formData.append("Feedback", document.getElementById('feedbackText').value);
 
         fetch(scriptURL, { method: 'POST', body: formData })
-            .then(() => {
+            .then(response => {
+                if(!response.ok) throw new Error("Network error");
                 alert("Feedback Saved! Thank you. 🌸");
                 btn.disabled = false;
                 btn.innerText = "Submit Feedback";
+                
                 // Clear the feedback fields
                 selectedRating = 0;
                 document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
@@ -159,7 +161,9 @@
         formData.append("Contact", contact);
         formData.append("Product", product);
         formData.append("Requirements", details);
-        fetch(scriptURL, { method: 'POST', body: formData });
+        
+        // Use no-cors or ignore response since we just want to send the WhatsApp message
+        fetch(scriptURL, { method: 'POST', body: formData }).catch(e => console.log("Sheet save error", e));
 
         // Construct and open WhatsApp
         const message = `*3G Flora - New Enquiry*%0A%0A` +
