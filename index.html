@@ -5,52 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3G Flora - Feedback</title>
     <style>
+        :root {
+            --primary: #d4a373;
+            --secondary: #b76e79;
+            --text-dark: #5d4037;
+            --bg-light: #fff8f0;
+        }
+
         body { 
             font-family: 'Georgia', serif; 
             text-align: center; 
-            background-color: #fff8f0;
+            background-color: var(--bg-light);
             background-image: linear-gradient(rgba(255,248,240,0.9), rgba(255,248,240,0.9)),
                               url('https://www.transparenttextures.com/patterns/flowers.png');
             background-size: cover, 300px;
             padding: 20px; 
-            color: #5d4037; 
+            color: var(--text-dark); 
             margin: 0;
             min-height: 100vh;
         }
         
         .container { 
             max-width: 440px; 
-            margin: 30px auto;
+            margin: 20px auto;
             background: rgba(255, 255, 255, 0.97); 
             padding: 35px 25px; 
             border-radius: 35px; 
-            border: 4px solid #d4a373;
+            border: 4px solid var(--primary);
             box-shadow: 0 20px 50px rgba(183, 110, 121, 0.3); 
         }
         
         .logo-img { 
-            width: 215px; 
-            height: 215px; 
+            width: 180px; 
+            height: 180px; 
             border-radius: 50%; 
-            margin: 10px auto 15px; 
-            border: 7px solid #d4a373;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+            margin: 0 auto 15px; 
+            border: 6px solid var(--primary);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             object-fit: contain;
             display: block;
             background: white;
-            padding: 12px;
+            padding: 10px;
         }
 
         .brand-logo { 
-            font-size: 34px; 
+            font-size: 32px; 
             font-weight: bold; 
-            color: #b76e79; 
+            color: var(--secondary); 
             letter-spacing: 2px;
-            margin-bottom: 5px;
+            margin: 10px 0 5px;
         }
         
         .brand-tagline { 
-            font-size: 15.5px; 
+            font-size: 15px; 
             font-style: italic; 
             color: #8d6e63; 
             margin-bottom: 25px;
@@ -61,215 +68,213 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: linear-gradient(45deg, #E1306C, #f77737, #d4a373);
+            background: linear-gradient(45deg, #E1306C, #f77737, var(--primary));
             color: white; 
-            padding: 15px 30px; 
+            padding: 14px 25px; 
             border-radius: 50px; 
             text-decoration: none; 
             font-weight: 600; 
-            font-size: 16.5px;
-            margin: 20px auto 30px;
-            width: 88%;
-            box-shadow: 0 6px 20px rgba(225, 48, 108, 0.35);
+            font-size: 15px;
+            margin-bottom: 25px;
+            width: 85%;
+            box-shadow: 0 6px 15px rgba(225, 48, 108, 0.3);
         }
 
         .stars { 
-            font-size: 52px; 
-            cursor: pointer; 
+            display: flex;
+            justify-content: center;
+            font-size: 45px; 
             color: #e0e0e0; 
-            margin: 20px 0 15px; 
-            letter-spacing: 6px;
+            margin: 15px 0; 
+            cursor: pointer;
         }
         
-        .stars span.active { 
-            color: #d4a373; 
-            text-shadow: 0 0 15px rgba(212, 163, 115, 0.7);
+        .star { transition: color 0.2s; padding: 0 5px; }
+        .star.active { 
+            color: var(--primary); 
+            text-shadow: 0 0 10px rgba(212, 163, 115, 0.5);
         }
         
-        #ai-section { 
-            display: none; 
-            margin-top: 15px; 
-            text-align: left; 
-            animation: fadeIn 0.8s; 
-        }
+        #ai-section { display: none; animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
         .status-msg { 
-            font-size: 16.5px; 
+            font-size: 16px; 
             margin-bottom: 15px; 
-            color: #b76e79; 
+            color: var(--secondary); 
             font-weight: bold; 
-            text-align: center; 
         }
         
+        .chip-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
         .chip { 
             background: #fffaf0; 
-            padding: 13px 15px; 
-            border-radius: 18px; 
-            margin: 8px 0; 
-            font-size: 14px; 
+            padding: 10px 14px; 
+            border-radius: 15px; 
+            font-size: 13px; 
             cursor: pointer; 
-            border: 1px solid #fce4ec;
-            color: #5d4037;
-            transition: all 0.3s;
+            border: 1px solid #eee;
+            color: var(--text-dark);
+            transition: all 0.2s;
         }
+        
+        .chip:hover { background: #fce4ec; border-color: var(--secondary); }
         
         input[type="text"], textarea { 
             width: 100%; 
             padding: 14px; 
             border-radius: 15px; 
-            border: 2px solid #d4a373; 
+            border: 2px solid #eee; 
             margin: 8px 0;
             box-sizing: border-box;
             font-family: inherit;
+            outline: none;
         }
+
+        input:focus, textarea:focus { border-color: var(--primary); }
         
-        textarea { height: 105px; resize: vertical; }
+        textarea { height: 100px; resize: none; }
         
         .submit-btn { 
-            background: #5d4037; 
+            background: var(--text-dark); 
             color: white; 
             border: none; 
             padding: 16px; 
             border-radius: 50px; 
-            margin-top: 20px; 
             width: 100%; 
             cursor: pointer; 
             font-weight: bold;
-            font-size: 16.5px;
+            font-size: 16px;
+            margin-top: 15px;
         }
+
+        .submit-btn:disabled { background: #ccc; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <img src="https://i.postimg.cc/cZJsYWrb/filelogo.png" 
-         alt="3G Flora Logo" 
-         class="logo-img"
-         onerror="this.src='https://via.placeholder.com/215x215/fffaf0/d4a373?text=3G+Flora';">
-
+    <img src="https://i.postimg.cc/cZJsYWrb/filelogo.png" alt="3G Flora Logo" class="logo-img">
     <div class="brand-logo">3G Flora</div>
     <div class="brand-tagline">Preserving Nature in Art</div>
 
-    <a href="https://www.instagram.com/3g_flora?igsh=MXFnNXZkMnk2a2Juag==" 
-       target="_blank" 
-       class="ig-follow">
+    <a href="https://www.instagram.com/3g_flora?igsh=MXFnNXZkMnk2a2Juag==" target="_blank" class="ig-follow">
         📷 Follow us on Instagram
     </a>
 
-    <input type="text" id="username-input" placeholder="Your Name *">
-    <input type="text" id="contact-input" placeholder="Mobile Number or Instagram ID">
+    <form id="feedbackForm">
+        <input type="text" id="userName" placeholder="Your Name *" required>
+        <input type="text" id="userContact" placeholder="Mobile or Instagram ID">
 
-    <div style="font-size: 17px; margin: 25px 0 8px; font-weight: bold; color: #6d4c41;">
-        How was your experience with our resin art?
-    </div>
-    
-    <div class="stars" id="star-rating">
-        <span onclick="updateRating(1)">★</span>
-        <span onclick="updateRating(2)">★</span>
-        <span onclick="updateRating(3)">★</span>
-        <span onclick="updateRating(4)">★</span>
-        <span onclick="updateRating(5)">★</span>
-    </div>
+        <div style="font-size: 16px; margin: 20px 0 5px; font-weight: bold;">
+            Rate your experience:
+        </div>
+        
+        <div class="stars" id="starRating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+        </div>
 
-    <div id="ai-section">
-        <p class="status-msg" id="msg-text"></p>
-        <div id="suggestion-list"></div>
-        <textarea id="review-input" placeholder="Share your thoughts..."></textarea>
-        <button class="submit-btn" onclick="submitFeedback()">Submit Feedback</button>
-    </div>
+        <div id="ai-section">
+            <p class="status-msg" id="msgText"></p>
+            <div class="chip-container" id="suggestionList"></div>
+            <textarea id="reviewText" placeholder="Tell us more about your order..." required></textarea>
+            <button type="submit" class="submit-btn" id="submitBtn">Submit Feedback</button>
+        </div>
+    </form>
 </div>
 
 <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbz8xO_ucuKjITosMVE62XvjnxqofwLyA7mfNEQOiqQd7BPPtU-HRSOzRDPJp-SCIGxEPQ/exec";
     let currentRating = 0;
 
     const reviews = {
-        low: ["The piece had more bubbles in the resin than expected.", "Pickup/Delivery timing could be improved.", "The product colors looked different than the online photos."],
-        neutral: ["Beautiful piece but could be improved in finishing.", "Loved the concept! Delivery was smooth."],
-        high: ["Stunning botanical preservation! Truly a unique piece of art.", "The rose gold details and flowers are beautiful. Highly recommend!", "Exquisite quality and the packaging made it feel so special."]
+        low: ["Bubbles in the resin", "Delivery was late", "Colors look different"],
+        neutral: ["Good piece, minor finish issues", "Beautiful concept", "Smooth delivery"],
+        high: ["Stunning art!", "Exquisite quality", "Perfect packaging!", "Highly recommend!"]
     };
 
-    function updateRating(n) {
-        currentRating = n;
-        const stars = document.querySelectorAll('.stars span');
-        stars.forEach((s, i) => s.classList.toggle('active', i < n));
-        
-        document.getElementById('ai-section').style.display = 'block';
-        const list = document.getElementById('suggestion-list');
-        const msg = document.getElementById('msg-text');
+    const stars = document.querySelectorAll('.star');
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            currentRating = star.getAttribute('data-value');
+            updateStars(currentRating);
+            showAISection(currentRating);
+        });
+    });
+
+    function updateStars(rating) {
+        stars.forEach((s, i) => {
+            s.classList.toggle('active', i < rating);
+        });
+    }
+
+    function showAISection(rating) {
+        const section = document.getElementById('ai-section');
+        const msg = document.getElementById('msgText');
+        const list = document.getElementById('suggestionList');
+        section.style.display = 'block';
         list.innerHTML = '';
 
-        if (n <= 2) {
-            msg.innerText = "We're sorry to hear that! How can we improve?";
-            reviews.low.forEach(t => addChip(t));
-        } else if (n === 3 || n === 4) {
-            msg.innerText = "Thank you! Any specific thoughts?";
-            reviews.neutral.forEach(t => addChip(t));
-        } else if (n === 5) {
-            msg.innerText = "We're delighted! Choose a review to share:";
-            reviews.high.forEach(t => addChip(t));
+        let choices = [];
+        if (rating <= 2) {
+            msg.innerText = "We're sorry! How can we improve?";
+            choices = reviews.low;
+        } else if (rating <= 4) {
+            msg.innerText = "Thank you! Any specific feedback?";
+            choices = reviews.neutral;
+        } else {
+            msg.innerText = "We're delighted! Choose a quick review:";
+            choices = reviews.high;
         }
+
+        choices.forEach(text => {
+            const chip = document.createElement('div');
+            chip.className = 'chip';
+            chip.innerText = text;
+            chip.onclick = () => document.getElementById('reviewText').value = text;
+            list.appendChild(chip);
+        });
     }
 
-    function addChip(text) {
-        const div = document.createElement('div');
-        div.className = 'chip';
-        div.innerText = text;
-        div.onclick = () => document.getElementById('review-input').value = text;
-        document.getElementById('suggestion-list').appendChild(div);
-    }
-
-    async function submitFeedback() {
-        const name = document.getElementById('username-input').value.trim();
-        const contact = document.getElementById('contact-input').value.trim();
-        const reviewText = document.getElementById('review-input').value.trim();
-        const rating = currentRating;
-
-        if (!name) {
-            alert("Please enter your Name.");
-            return;
-        }
-        if (rating === 0) {
-            alert("Please select a star rating.");
-            return;
-        }
-        if (!reviewText) {
-            alert("Please share your thoughts or select a suggestion.");
-            return;
-        }
-
-        // === CHANGE THIS LINE WITH YOUR GOOGLE WEB APP URL ===
-        const scriptURL = "https://script.google.com/macros/s/YOUR_WEB_APP_URL/exec";
+    document.getElementById('feedbackForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.disabled = true;
+        btn.innerText = "Sending...";
 
         const formData = new FormData();
-        formData.append("Timestamp", new Date().toLocaleString('en-IN'));
-        formData.append("Name", name);
-        formData.append("Contact", contact || "");
-        formData.append("Rating", rating);
-        formData.append("Feedback", reviewText);
+        formData.append("Timestamp", new Date().toLocaleString());
+        formData.append("Name", document.getElementById('userName').value);
+        formData.append("Contact", document.getElementById('userContact').value);
+        formData.append("Rating", currentRating);
+        formData.append("Feedback", document.getElementById('reviewText').value);
 
-        try {
-            const response = await fetch(scriptURL, { 
-                method: 'POST', 
-                body: formData 
+        fetch(scriptURL, { method: 'POST', body: formData })
+            .then(response => {
+                alert("Thank you! Your feedback has been preserved. 🌸");
+                document.getElementById('feedbackForm').reset();
+                document.getElementById('ai-section').style.display = 'none';
+                updateStars(0);
+                btn.disabled = false;
+                btn.innerText = "Submit Feedback";
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert("Something went wrong. Please try again.");
+                btn.disabled = false;
+                btn.innerText = "Submit Feedback";
             });
-            console.log("Data sent to Google Sheet");
-        } catch (e) {
-            console.error("Failed to save:", e);
-        }
-
-        alert(`Thank you ${name}! 🌸\n\nYour feedback has been saved successfully.`);
-
-        // Reset everything after submission
-        document.getElementById('review-input').value = '';
-        document.getElementById('username-input').value = '';
-        document.getElementById('contact-input').value = '';
-        
-        currentRating = 0;
-        const stars = document.querySelectorAll('.stars span');
-        stars.forEach(s => s.classList.remove('active'));
-        
-        document.getElementById('ai-section').style.display = 'none';
-    }
+    });
 </script>
 
 </body>
