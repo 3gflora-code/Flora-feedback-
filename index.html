@@ -19,10 +19,10 @@
         /* Click Animation for Button */
         @keyframes bounceClick {
             0% { transform: scale(1); }
-            50% { transform: scale(0.9); }
+            50% { transform: scale(0.92); }
             100% { transform: scale(1); }
         }
-        .anim-bounce { animation: bounceClick 0.3s ease-in-out; }
+        .anim-bounce { animation: bounceClick 0.2s ease-out; }
 
         input, textarea, select { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #ddd; margin: 8px 0 15px; box-sizing: border-box; font-family: inherit; font-size: 14px; }
         label { display: block; text-align: left; font-weight: bold; font-size: 13px; color: #6d4c41; margin-left: 5px; }
@@ -97,36 +97,50 @@
     // YOUR WHATSAPP NUMBER
     const myWhatsAppNumber = "917083642528"; 
 
-    // --- NEW: Sound & Animation Logic ---
+    // --- REALISTIC MOUSE CLICK SOUND ---
     function playClickSound() {
         try {
             const AudioContext = window.AudioContext || window.webkitAudioContext;
-            const ctx = new AudioContext();
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
+            if (!AudioContext) return;
             
-            osc.connect(gain);
+            const ctx = new AudioContext();
+            const gain = ctx.createGain();
             gain.connect(ctx.destination);
             
-            osc.type = 'sine'; // Smooth beep sound
-            osc.frequency.setValueAtTime(800, ctx.currentTime); // Pitch drop
-            osc.frequency.exponentialRampToValueAtTime(150, ctx.currentTime + 0.1);
+            // Create a 10-millisecond burst of white noise (mechanical click)
+            const bufferSize = ctx.sampleRate * 0.01; 
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = Math.random() * 2 - 1; 
+            }
             
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+            
+            // Filter it to sound snappy like plastic
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'highpass';
+            filter.frequency.value = 1200; 
+            
+            noise.connect(filter);
+            filter.connect(gain);
+            
+            // Snap volume envelope
             gain.gain.setValueAtTime(1, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.01);
             
-            osc.start();
-            osc.stop(ctx.currentTime + 0.1);
+            noise.start(ctx.currentTime);
         } catch(e) {
             console.log("Audio not supported");
         }
     }
 
+    // Animation function
     function handleFollowClick(element) {
         playClickSound();
         element.classList.add('anim-bounce');
-        // Remove the animation class after it finishes so it can run again next time
-        setTimeout(() => element.classList.remove('anim-bounce'), 300);
+        setTimeout(() => element.classList.remove('anim-bounce'), 200);
     }
     // -------------------------------------
 
@@ -142,7 +156,7 @@
 
     document.querySelectorAll('.star').forEach(star => {
         star.onclick = () => {
-            playClickSound(); // Added a subtle click sound to stars as well!
+            playClickSound(); 
             selectedRating = star.dataset.value;
             document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('active', i < selectedRating));
             
