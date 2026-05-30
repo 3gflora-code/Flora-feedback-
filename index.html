@@ -3,24 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3G Flora - Feedback & Enquiry</title>
+    <title>3G Flora - Order & Feedback</title>
     <style>
         :root { --primary: #d4a373; --secondary: #b76e79; --text-dark: #5d4037; --bg-light: #fff8f0; }
         body { font-family: 'Georgia', serif; text-align: center; background-color: var(--bg-light); padding: 15px; color: var(--text-dark); margin: 0; }
         .container { max-width: 450px; margin: 10px auto; background: rgba(255, 255, 255, 0.98); padding: 25px 20px; border-radius: 30px; border: 4px solid var(--primary); box-shadow: 0 15px 40px rgba(183, 110, 121, 0.2); }
-        .logo-img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 10px; background: #fff; padding: 5px; }
-        
-        .brand-logo { font-size: 32px; font-weight: bold; font-style: italic; color: var(--secondary); margin-bottom: 20px; }
-        
+        .logo-img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 10px; background: #fff; padding: 0; object-fit: cover; }
+        .brand-logo { font-size: 32px; font-weight: bold; font-style: italic; color: var(--secondary); margin-bottom: 6px; }
+        .tagline { font-size: 14px; color: var(--secondary); margin-bottom: 18px; font-style: italic; }
+
         .ig-follow { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: linear-gradient(45deg, #E1306C, #f77737, var(--primary)); color: white; padding: 12px 20px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; margin-bottom: 20px; width: 85%; transition: 0.2s; }
-        
+
         @keyframes bounceClick { 0% { transform: scale(1); } 50% { transform: scale(0.92); } 100% { transform: scale(1); } }
         .anim-bounce { animation: bounceClick 0.2s ease-out; }
 
         input, textarea, select { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid #ddd; margin: 8px 0 15px; box-sizing: border-box; font-family: inherit; font-size: 14px; }
         label { display: block; text-align: left; font-weight: bold; font-size: 13px; color: #6d4c41; margin-left: 5px; }
-        
-        /* NEW: 10% Discount Banner Style */
+
+        .section-title { font-weight: bold; color: var(--secondary); font-size: 18px; margin-bottom: 12px; }
+
+        .trust-note { font-size: 12px; color: #8d6e63; margin: 4px 0 16px; line-height: 1.5; background: #fffaf2; border: 1px dashed #e7c9a9; border-radius: 12px; padding: 10px; }
+
         .discount-banner { background: #ffebee; color: #c62828; padding: 12px; border-radius: 12px; font-weight: bold; font-size: 14px; margin-bottom: 15px; border: 1px dashed #ef9a9a; display: flex; align-items: center; justify-content: center; gap: 8px; }
 
         .stars { display: flex; justify-content: center; font-size: 40px; color: #e0e0e0; cursor: pointer; margin: 10px 0; }
@@ -30,11 +33,214 @@
         .chip:hover { background: #fce4ec; }
         .wa-btn { background: #25D366; color: white; border: none; padding: 15px; border-radius: 50px; width: 100%; cursor: pointer; font-weight: bold; font-size: 16px; display: flex; align-items: center; justify-content: center; gap: 10px; margin: 10px 0; transition: 0.2s; }
         .wa-btn:active { transform: scale(0.98); }
+        .wa-btn:disabled { opacity: 0.6; cursor: default; }
+        hr { border: 0; border-top: 1px solid #eee; }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <img src="logo.png" alt="3G Flora Logo" class="logo-img">
+    <div class="brand-logo">3G Flora</div>
+    <div class="tagline">We turn your memories into forever 🌸</div>
+
+    <a href="https://www.instagram.com/3g_flora?igsh=MXFnNXZkMnk2a2Juag==" target="_blank" rel="noopener" class="ig-follow" onclick="handleFollowClick(this)">
+        📷 Follow us on Instagram
+    </a>
+
+    <form id="mainForm" onsubmit="return false;">
+        <label>Your Name *</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label>Mobile / Instagram ID (Optional)</label>
+        <input type="text" id="contact" placeholder="How can we reach you?">
+
+        <hr style="margin: 20px 0;">
+
+        <!-- ORDER SECTION FIRST -->
+        <div class="section-title">PLACE YOUR ORDER</div>
+        <label>Select Product *</label>
+        <select id="enquiryProduct">
+            <option value="None">-- Select a Product --</option>
+            <option value="Breastmilk Keepsake">Breastmilk Keepsake</option>
+            <option value="Cord / First Hair Keepsake">Cord / First Hair Keepsake</option>
+            <option value="Wedding / Flower Preservation">Wedding / Flower Preservation</option>
+            <option value="Memorial Keepsake">Memorial Keepsake</option>
+            <option value="Custom Jewellery">Custom Jewellery</option>
+            <option value="Personalized Gift / Return Gift">Personalized Gift / Return Gift</option>
+            <option value="Photo Frame">Photo Frame</option>
+            <option value="Name Plate">Name Plate</option>
+            <option value="Clock">Clock</option>
+            <option value="Home Decor">Home Decor</option>
+            <option value="Other Customisation">Other Customisation</option>
+        </select>
+
+        <label>Specific Requirements & Budget</label>
+        <textarea id="enquiryDetails" placeholder="Colors, budget, occasion, or other details..."></textarea>
+
+        <div class="trust-note">
+            🤍 Your keepsake is handled with care — we preserve exactly what you send and ship it back safely, pan-India.
+        </div>
+
+        <button type="button" id="enquiryBtn" onclick="sendEnquiryWA()" class="wa-btn">
+            💬 Send Order Enquiry via WhatsApp
+        </button>
+
+        <hr style="margin: 30px 0;">
+
+        <!-- FEEDBACK SECTION SECOND -->
+        <div class="section-title">SHARE FEEDBACK</div>
+
+        <div class="discount-banner">
+            🎁 Give 4 or 5 ★ feedback & get 10% OFF your next order!
+        </div>
+
+        <div class="stars" id="starRating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+        </div>
+        <div class="chip-container" id="suggestionList"></div>
+        <textarea id="feedbackText" placeholder="Tell us more about your order or what you think of our collection..."></textarea>
+
+        <button type="button" id="feedbackBtn" onclick="sendFeedbackWA()" class="wa-btn">
+            💬 Send Feedback via WhatsApp
+        </button>
+    </form>
+</div>
+
+<script>
+    const myWhatsAppNumber = "917083642528";
+
+    function playClickSound() {
+        try {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+            const ctx = new AudioContext();
+            const gain = ctx.createGain();
+            gain.connect(ctx.destination);
+            const bufferSize = ctx.sampleRate * 0.01;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'highpass';
+            filter.frequency.value = 1200;
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.gain.setValueAtTime(1, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.01);
+            noise.start(ctx.currentTime);
+        } catch (e) { console.log("Audio not supported"); }
+    }
+
+    function handleFollowClick(element) {
+        playClickSound();
+        element.classList.add('anim-bounce');
+        setTimeout(() => element.classList.remove('anim-bounce'), 200);
+    }
+
+    // Briefly disable a button to prevent double-sends
+    function lockButton(btn) {
+        if (!btn) return;
+        btn.disabled = true;
+        setTimeout(() => { btn.disabled = false; }, 1500);
+    }
+
+    let selectedRating = 0;
+
+    const suggestions = {
+        "1": ["Damaged / Poor finish", "Late delivery", "Too expensive", "Didn't find what I wanted"],
+        "2": ["More bubbles than expected", "Color mismatch", "Need better product photos", "Limited variety"],
+        "3": ["Decent finish", "Okay packaging", "Need more custom options", "Fair pricing"],
+        "4": ["Good quality product", "Beautiful, minor delay", "Great designs", "Nice variety"],
+        "5": ["Exquisite quality & finish!", "Perfect packaging!", "Stunning art collection!", "Highly recommend!"]
+    };
+
+    document.querySelectorAll('.star').forEach(star => {
+        star.onclick = () => {
+            playClickSound();
+            selectedRating = parseInt(star.dataset.value, 10);
+            document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('active', i < selectedRating));
+
+            const list = document.getElementById('suggestionList');
+            list.innerHTML = '';
+            const hints = suggestions[selectedRating] || [];
+            hints.forEach(h => {
+                const c = document.createElement('div');
+                c.className = 'chip';
+                c.innerText = h;
+                c.onclick = () => { playClickSound(); document.getElementById('feedbackText').value = h; };
+                list.appendChild(c);
+            });
+        };
+    });
+
+    function sendFeedbackWA() {
+        playClickSound();
+        const name = document.getElementById('name').value.trim();
+        const contact = document.getElementById('contact').value.trim() || "Not provided";
+        const feedback = document.getElementById('feedbackText').value.trim() || "No additional comments";
+
+        if (!name) { alert("Please enter your Name."); return; }
+        if (selectedRating === 0) { alert("Please select a star rating."); return; }
+
+        lockButton(document.getElementById('feedbackBtn'));
+
+        // 10% off note only added for 4-5 star feedback
+        const discountLine = selectedRating >= 4
+            ? `\n\n🎁 *Note: This customer earned 10% OFF their next order!*`
+            : "";
+
+        const message =
+            `*3G Flora - New Feedback* 🌸\n\n` +
+            `*Name:* ${name}\n` +
+            `*Contact:* ${contact}\n` +
+            `*Rating:* ${selectedRating} Stars ⭐\n` +
+            `*Feedback:* ${feedback}` +
+            discountLine;
+
+        const waURL = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(message)}`;
+        window.open(waURL, '_blank');
+
+        setTimeout(() => {
+            selectedRating = 0;
+            document.querySelectorAll('.star').forEach(s => s.classList.remove('active'));
+            document.getElementById('suggestionList').innerHTML = '';
+            document.getElementById('feedbackText').value = '';
+        }, 1000);
+    }
+
+    function sendEnquiryWA() {
+        playClickSound();
+        const name = document.getElementById('name').value.trim();
+        const contact = document.getElementById('contact').value.trim() || "Not provided";
+        const product = document.getElementById('enquiryProduct').value;
+        const details = document.getElementById('enquiryDetails').value.trim() || "No specific details";
+
+        if (!name) { alert("Please enter your Name."); return; }
+        if (product === "None") { alert("Please select a product."); return; }
+
+        lockButton(document.getElementById('enquiryBtn'));
+
+        const message =
+            `*3G Flora - New Order Enquiry* 🛍️\n\n` +
+            `*Name:* ${name}\n` +
+            `*Contact:* ${contact}\n` +
+            `*Product:* ${product}\n` +
+            `*Details:* ${details}`;
+
+        const waURL = `https://wa.me/${myWhatsAppNumber}?text=${encodeURIComponent(message)}`;
+        window.open(waURL, '_blank');
+    }
+</script>
+
+</body>
+</html><div class="container">
     <img src="https://i.postimg.cc/cZJsYWrb/filelogo.png" alt="3G Flora Logo" class="logo-img">
     <div class="brand-logo">3G Flora</div>
 
